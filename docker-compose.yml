@@ -1,0 +1,16 @@
+version: '3'
+services:
+  app-koa2-boilerplate:
+    build:
+      context: .
+      # args:
+      #   NODE_ENV: production
+    container_name: app-koa2boil
+    ports:
+      - "8030:80"
+    # log_driver: "syslog"
+    # log_opt:
+    #   syslog-address: "tcp://10.10.50.1:10514"
+    # command: start --env production /app/process.yml
+    environment:
+      - TZ=Asia/Shanghai

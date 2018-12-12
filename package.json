@@ -1,0 +1,68 @@
+{
+  "name": "koa2-boilerplate",
+  "version": "1.1.0",
+  "description": "The boilerplate project for KOA 2.",
+  "scripts": {
+    "clean": "rm -rf dist/*",
+    "start": "node_modules/.bin/babel-node bin/server.js",
+    "dev": "node_modules/.bin/nodemon bin/server.js",
+    "build:bin": "babel bin -d dist/bin -s",
+    "build:app": "babel app -d dist/app -s",
+    "build:lib": "babel lib -d dist/lib -s",
+    "build:all": "npm run build:bin && npm run build:app && npm run build:lib",
+    "build:copy:config": "mkdir -p dist/config",
+    "build:copy:appfile": "cp package.json dist/ && cp yarn.lock dist/ && cp process.yml dist/ && cp Dockerfile dist/ && cp docker-compose.yml dist/",
+    "build:copy": "npm run build:copy:config && npm run build:copy:appfile",
+    "build": "npm run clean && npm run build:all && npm run build:copy",
+    "debug-brk": "npm run debug -- --break",
+    "test": "mocha test/**/*.js --compilers js:babel-register --require test/_helpers",
+    "test-watch": "npm run test -- --watch",
+    "lint": "eslint app/ bin/ lib/ test/",
+    "lint-watch": "esw -w app/ bin/ lib/ test/"
+  },
+  "author": {
+    "name": "Lanvige Jiang"
+  },
+  "contributors": [
+    {
+      "name": "Lanvige Jiang"
+    }
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "awilix": "^3.0.0",
+    "awilix-koa": "^2.0.0",
+    "bcryptjs": "^2.4.3",
+    "glob": "^7.1.2",
+    "ip": "^1.1.5",
+    "jsonwebtoken": "^8.4.0",
+    "kcors": "^2.2.1",
+    "koa": "^2.3.0",
+    "koa-bodyparser": "^4.1.0",
+    "koa-router": "^7.3.0",
+    "mysql2": "^1.5.0",
+    "request": "^2.81.0",
+    "request-promise-native": "^1.0.4",
+    "sequelize": "^4.22.6",
+    "standard": "^10.0.3"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.0",
+    "babel-plugin-transform-es2015-modules-commonjs": "^6.26.0",
+    "babel-preset-es2017": "^6.24.1",
+    "babel-register": "^6.26.0",
+    "chai": "^4.1.1",
+    "mocha": "^4.0.1",
+    "nodemon": "^1.11.0",
+    "sequelize-cli": "^3.0.0",
+    "shipit-deploy": "^2.5.1",
+    "shipit-shared": "^4.4.2",
+    "shipit-shared-copy": "^0.1.0",
+    "sinon": "^4.1.2",
+    "sinon-chai": "^2.13.0",
+    "source-map-support": "^0.5.0",
+    "supertest": "^3.0.0",
+    "yargs": "^10.0.3"
+  }
+}

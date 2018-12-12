@@ -1,0 +1,7 @@
+{
+  "host": "localhost",
+  "port": 3306,
+  "database": "stock_analytics",
+  "username": "root",
+  "password": "asd1234"
+}
