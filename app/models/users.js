@@ -6,7 +6,9 @@ export default class Users extends Model {
 			id: {type: Sequelize.INTEGER ,primaryKey: true},
 			account: { type: Sequelize.CHAR },
 			password: { type: Sequelize.CHAR },
-			name: { type: Sequelize.CHAR }
+			name: { type: Sequelize.CHAR },
+			token: { type: Sequelize.CHAR },	
+			property: { type: Sequelize.INTEGER }
 		}, {
 			modelName: 'users',
 			sequelize: db,

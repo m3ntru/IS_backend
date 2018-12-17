@@ -6,7 +6,6 @@ export default class Product extends Model {
 			id: {type: Sequelize.INTEGER ,primaryKey: true},
 			type: { type: Sequelize.BOOLEAN},
 			price: { type: Sequelize.FLOAT },
-			quantity: { type: Sequelize.FLOAT },
 			userid: { type: Sequelize.INTEGER },
 			createtime: {type: Sequelize.DATE}
 		}, {

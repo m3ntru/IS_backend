@@ -3,11 +3,13 @@ export default class UserService {
     this.user = Users
   }
 
-  async createAccount({ account, password }) {
-    if (await this.checkUserIsExist({ account, password })) {
+  async createAccount({ account, password, name }) {
+    if (await this.checkUserIsExist({ account })) {
       const userData = await this.user.create({
         account,
-        password
+        password,
+        name,
+        token: ''
       })
       return userData
     } else {
@@ -15,21 +17,51 @@ export default class UserService {
     }
   }
 
-  async checkUserIsExist({ account, password }) {
+  async checkUserIsExist({ account }) {
     const counter = await this.user.count({
       where: {
-        account,
-        password
+        account
       }
     })
     return counter === 0
   }
 
-  async getUserIfExist({ account, password }) {
+  async getUserIfExist({ account }) {
     const user = await this.user.findOne({
       where: {
-        account: account,
-        password: password
+        account: account
+      }
+    })
+    return user || false
+  }
+
+  async updateUserToken( id, token ) {
+    const counter = await this.user.update({
+      token
+    },{
+      where: {
+        id
+      }
+    })
+    return counter || 0
+  }
+
+  async updateUserProperty({ id, property }) {
+    const counter = await this.user.update({
+      property
+    },{
+      where: {
+        id
+      }
+    })
+    return counter === 0
+  }
+
+  async getTokenById(id) {
+    const user = await this.user.findOne({
+      attributes: ['token','property'],
+      where: {
+        id: id
       }
     })
     return user || false

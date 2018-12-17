@@ -3,34 +3,33 @@ export default class ProductService {
     this.product = Product
   }
 
-  async createBuyIn({ id, price, quantity }) {
+  async createOut({ id, price }) {
     const ProductData = await this.product.create({
-        type: false,
+        type: 'expenditure',
         price,
-        quantity,
         userid: id
       })
       return ProductData || false
   }
 
-  async createSellOut({ id, price, quantity }) {
+  async createIn({ id, price }) {
     const ProductData = await this.product.create({
-        type: true,
+        type: 'deposit',
         price,
-        quantity,
         userid: id
       })
       return ProductData || false
   }
 
-  async getUserOrder({ id }) {
+  async getUserRecord({ id }) {
     const data = await this.product.findAll({
       where: {
         userid: id
       },
       order: [
         ['createtime', 'desc']
-      ]
+      ],
+      limit: parseInt(10)
     })
     return data || false
   }
