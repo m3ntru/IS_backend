@@ -35,31 +35,31 @@ export default class UserService {
     return user || false
   }
 
-  async updateUserToken( id, token ) {
+  async updateUserToken(id, token) {
     const counter = await this.user.update({
       token
-    },{
-      where: {
-        id
-      }
-    })
+    }, {
+        where: {
+          id
+        }
+      })
     return counter || 0
   }
 
   async updateUserProperty({ id, property }) {
     const counter = await this.user.update({
       property
-    },{
-      where: {
-        id
-      }
-    })
+    }, {
+        where: {
+          id
+        }
+      })
     return counter === 0
   }
 
   async getTokenById(id) {
     const user = await this.user.findOne({
-      attributes: ['token','property'],
+      attributes: ['token', 'property'],
       where: {
         id: id
       }

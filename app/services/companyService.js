@@ -8,7 +8,7 @@ export default class CompanyService {
 		const comapny = await this.company.findAll({
 			attributes: this.field
 		})
-		
+
 		if (comapny && comapny.length > 0) {
 			return comapny.map(item => item.toJSON())
 		}

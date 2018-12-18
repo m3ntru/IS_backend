@@ -1,13 +1,13 @@
 import { makeClassInvoker } from 'awilix-koa'
 
 class CompanyApi {
-  constructor ({ companyService }) {
+  constructor({ companyService }) {
     this.companyService = companyService
   }
 
-  async getCompany (ctx) {
+  async getCompany(ctx) {
     const company = await this.companyService.getCompanyList()
-    
+
     return ctx.success(company)
   }
 }

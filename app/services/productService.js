@@ -5,20 +5,20 @@ export default class ProductService {
 
   async createOut({ id, price }) {
     const ProductData = await this.product.create({
-        type: 'expenditure',
-        price,
-        userid: id
-      })
-      return ProductData || false
+      type: 'expenditure',
+      price,
+      userid: id
+    })
+    return ProductData || false
   }
 
   async createIn({ id, price }) {
     const ProductData = await this.product.create({
-        type: 'deposit',
-        price,
-        userid: id
-      })
-      return ProductData || false
+      type: 'deposit',
+      price,
+      userid: id
+    })
+    return ProductData || false
   }
 
   async getUserRecord({ id }) {
